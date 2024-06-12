@@ -28,12 +28,12 @@ label {
     margin-top: 2px;
 }
 
-.icon-border
+.icon
 {
     font-size: 20px;
 }
 
-.icon-border::before {
+.icon::before {
     content: "";
     background-color: #000;
     border:9px solid #000;
