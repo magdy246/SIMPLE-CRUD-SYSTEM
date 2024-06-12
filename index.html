@@ -13,86 +13,83 @@
 </head>
 
 <body>
-    <div class="layer">
 
-        <main class="vh-100 d-flex flex-column justify-content-evenly align-items-center">
-            <h1 class="fw-medium my-3">SIMPLE CRUD SYSTEM</h1>
-            <section class="container">
-                <label class="text-white" for="productname"> <i class="me-1 text-black fa-solid fa-file-signature"></i>
-                    Name
-                    Product :</label>
-                <input oninput="validaiton(this)" class="productname form-control my-1" id="productname" name="product"
-                    type="text">
-                <label class="text-white" for="productprice"> <i class="me-1 text-black fa-solid fa-dollar-sign"></i>
-                    Price
-                    Product :</label>
-                <input oninput="validaiton(this)" class="form-control my-1" id="productprice" name="product"
-                    type="text">
-                <label class="text-white" for="productcat"> <i class="me-1 text-black fa-solid fa-layer-group"></i>
-                    Catagory
-                    Product :</label>
-                <input oninput="validaiton(this)" class="form-control my-1" id="productcat" name="product" type="text">
-                <label class="text-white" for="productdesc"> <i class="me-1 text-black fa-solid fa-terminal"></i>
-                    describtion
-                    Product :</label>
-                <input oninput="validaiton(this)" class="form-control my-1" id="productdesc" name="product" type="text">
-                <label class="text-white" for="productimg"> <i class="me-1 text-black fa-solid fa-image"></i> image
-                    Product
-                    :</label>
-                <input oninput="validaiton(this)" class="form-control my-1" id="productimg" name="product" type="file"
-                    accept="image/*">
+    <main class="vh-100 d-flex flex-column justify-content-evenly align-items-center">
+        <h1 class="fw-medium my-3">SIMPLE CRUD SYSTEM</h1>
+        <section class="container">
+            <label class="text-dark" for="productname"> <i class="icon-border me-1 text-white fa-solid fa-square-pen"></i>
+                Name
+                Product :</label>
+            <input oninput="validaiton(this)" class="productname form-control my-1" id="productname" name="product"
+                type="text">
+            <label class="text-dark" for="productprice"> <i class="icon-border me-1 text-white fa-solid fa-comment-dollar"></i>
+                Price
+                Product :</label>
+            <input oninput="validaiton(this)" class="form-control my-1" id="productprice" name="product" type="text">
+            <label class="text-dark" for="productcat"> <i class="icon-border me-1 text-white fa-solid fa-layer-group"></i>
+                Catagory
+                Product :</label>
+            <input oninput="validaiton(this)" class="form-control my-1" id="productcat" name="product" type="text">
+            <label class="text-dark" for="productdesc"> <i class="icon-border me-1 text-white fa-solid fa-terminal"></i>
+                describtion
+                Product :</label>
+            <input oninput="validaiton(this)" class="form-control my-1" id="productdesc" name="product" type="text">
+            <label class="text-dark" for="productimg"> <i class="icon-border me-1 text-white fa-solid fa-image"></i> image
+                Product
+                :</label>
+            <input oninput="validaiton(this)" class="form-control my-1" id="productimg" name="product" type="file"
+                accept="image/*">
 
-                <label class="text-white" for="searchitem"> <i class="me-1 text-black fa-solid fa-magnifying-glass"></i>
-                    Search Product :</label>
-                <input class="form-control" id="searchitem" type="text" oninput="search(this.value)">
+            <label class="text-dark" for="searchitem"> <i class="icon-border me-1 text-white fa-solid fa-magnifying-glass"></i>
+                Search Product :</label>
+            <input class="form-control" id="searchitem" type="text" oninput="search(this.value)">
 
-                <div class="text-center">
-                    <button id="add-btn" class="btn mx-auto my-3">ADD Product</button>
-                    <button id="update-btn" class="d-none btn mx-auto my-3"
-                        onclick="updateProduct()">Update Product</button>
-                </div>
-                <!-- modal -->
-                <div class="modal" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
-                    aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                    <div class="modal-dialog modal-dialog-centered">
-                        <div class="modal-content bg-dark">
-                            <div class="modal-body">
-                                <p class="text-white m-0 pb-2 h4 pra-model">Fill in all fields, to add your product :</p>
-                                <li class="text-white li-model list-unstyled"><i
-                                        class="text-danger fs-6 fa-regular fa-circle-right p-2"></i>product name must
-                                    contain at least
-                                    3 characters.</li>
-                                <li class="text-white li-model list-unstyled"><i
-                                        class="text-danger fs-6 fa-regular fa-circle-right p-2"></i>product price must
-                                    contain at 5 numbers.
-                                </li>
-                                <li class="text-white li-model list-unstyled"><i
-                                        class="text-danger fs-6 fa-regular fa-circle-right p-2"></i>product catagory
-                                    must contain at least
-                                    3 characters.
-                                </li>
-                                <li class="text-white li-model list-unstyled"><i
-                                        class="text-danger fs-6 fa-regular fa-circle-right p-2"></i>product describtion
-                                    must contain at least
-                                    3 characters.
-                                </li>
-                                <li class="text-white li-model list-unstyled"><i
-                                        class="text-danger fs-6 fa-regular fa-circle-right p-2"></i>Product image is
-                                    optinal.
-                                </li>
-                            </div>
-                            <div class="modal-footer py-0">
-                                <button id="closeBtn" onclick="closeModal()" type="button" class="btn btn-danger"
-                                    data-bs-dismiss="modal">Close</button>
-                            </div>
+            <div class="text-center">
+                <button id="add-btn" class="btn mx-auto my-3">ADD Product</button>
+                <button id="update-btn" class="d-none btn mx-auto my-3" onclick="updateProduct()">Update
+                    Product</button>
+            </div>
+            <!-- modal -->
+            <div class="modal" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+                aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content bg-dark">
+                        <div class="modal-body">
+                            <p class="text-white m-0 pb-2 h4 pra-model">Fill in all fields, to add your product :</p>
+                            <li class="text-white li-model list-unstyled"><i
+                                    class="text-danger fs-6 fa-regular fa-circle-right p-2"></i>product name must
+                                contain at least
+                                3 characters.</li>
+                            <li class="text-white li-model list-unstyled"><i
+                                    class="text-danger fs-6 fa-regular fa-circle-right p-2"></i>product price must
+                                contain at 5 numbers.
+                            </li>
+                            <li class="text-white li-model list-unstyled"><i
+                                    class="text-danger fs-6 fa-regular fa-circle-right p-2"></i>product catagory
+                                must contain at least
+                                3 characters.
+                            </li>
+                            <li class="text-white li-model list-unstyled"><i
+                                    class="text-danger fs-6 fa-regular fa-circle-right p-2"></i>product describtion
+                                must contain at least
+                                3 characters.
+                            </li>
+                            <li class="text-white li-model list-unstyled"><i
+                                    class="text-danger fs-6 fa-regular fa-circle-right p-2"></i>Product image is
+                                optinal.
+                            </li>
+                        </div>
+                        <div class="modal-footer py-0">
+                            <button id="closeBtn" onclick="closeModal()" type="button" class="btn btn-danger"
+                                data-bs-dismiss="modal">Close</button>
                         </div>
                     </div>
                 </div>
+            </div>
 
-                <div id="my-data" class="row d-flex justify-content-center align-content-center"></div>
-            </section>
-        </main>
-    </div>
+            <div id="my-data" class="row d-flex justify-content-center align-content-center"></div>
+        </section>
+    </main>
     <script src='script.js'></script>
     <script src="js/bootstrap.bundle.min.js"></script>
 </body>

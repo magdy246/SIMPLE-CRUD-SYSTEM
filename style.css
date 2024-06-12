@@ -10,10 +10,6 @@ body {
     background-size: cover;
 }
 
-.layer {
-    background-color: #0008;
-}
-
 ::selection {
     background-color: #fff;
     color: #fcac00;
@@ -21,13 +17,27 @@ body {
 
 main h1 {
     font-size: 80px;
-    color: transparent;
-    text-shadow: 0px 0px 2px #ff0000;
+    color: #fff;
+    text-shadow: 0px 0px 22px #000;
 }
 
 label {
     font-weight: 700;
     font-size: 20px;
+    margin-bottom: 5px;
+    margin-top: 2px;
+}
+
+.icon-border
+{
+    font-size: 20px;
+}
+
+.icon-border::before {
+    content: "";
+    background-color: #000;
+    border:9px solid #000;
+    border-radius: 50%;
 }
 
 #add-btn,
@@ -85,10 +95,10 @@ img {
 main .form-control:focus {
     color: #fff;
     font-weight: 600;
-    background-color: #0005;
-    border-color: transparent;
+    background-color: #0007;
+    border-color: #000;
     outline: 0;
-    box-shadow: 0px 0px 15px 1px #fff;
+    box-shadow: 0px 0px 15px 1px #000;
 }
 
 main .form-control {

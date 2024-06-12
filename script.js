@@ -5,13 +5,13 @@ var productdesc = document.querySelector("#productdesc");
 var productimg = document.querySelector("#productimg");
 var alertmodal = document.getElementById("staticBackdrop");
 var closeBtn = document.getElementById("closeBtn");
-var productlist = [];
+var productArray = [];
 var addBtn = document.querySelector("#add-btn");
 var updateBtn = document.querySelector("#update-btn");
 var currentIndex;
 if (localStorage.getItem("product") != null) {
-  productlist = JSON.parse(localStorage.getItem("product"));
-  display(productlist);
+  productArray = JSON.parse(localStorage.getItem("product"));
+  display(productArray);
 }
 
 addBtn.addEventListener("click", function () {
@@ -22,10 +22,11 @@ addBtn.addEventListener("click", function () {
       cat: productcat.value,
       desc: productdesc.value,
       image: `images/${productimg.files[0]?.name}`,
+      id : productArray.length
     };
-    productlist.push(product);
+    productArray.push(product);
     displayNone();
-    display(productlist);
+    display(productArray);
     storage();
     removeClasses();
   } else {
@@ -40,6 +41,7 @@ function display(list) {
   <div id="border-product" class="col-12 col-lg-3 rounded-4 overflow-hidden m-2 bg-black">
   <div>
   <h3 class="title text-center">PRODUCT</h3>
+  <input value="${i}" type = "hidden" class = "d-none"/>
   <h3 class="h3-display">name : ${list[i].name}</h3>
   <h3 class="h3-display">price : ${list[i].price}</h3>
   <h3 class="h3-display">cat : ${list[i].cat}</h3>
@@ -49,8 +51,10 @@ function display(list) {
   <img src="${list[i].image}" alt = "imag" ></img>
   </div>
   <div class="text-center m-3">
-  <button onclick="deleteproduct(${i})" class="delete btn px-2">delete</button>
-  <button onclick="getupdateproduct(${i})" class="update btn px-2">update</button>
+  <button onclick="deleteproduct(${i})" class="delete btn px-2">delete<i class="ms-2 fa-regular fa-trash-can"></i></button>
+  <button onclick="getupdateproduct(${i})" class="update btn px-2">update<i class="ms-2 fa-regular fa-pen-to-square"></i></button>
+  
+        
 </div>
 </div>`;
   document.querySelector("#my-data").innerHTML = box;
@@ -64,26 +68,26 @@ function displayNone(configration) {
 }
 
 function deleteproduct(i) {
-  productlist.splice(i, 1);
+  productArray.splice(i, 1);
   storage();
-  display(productlist);
+  display(productArray);
 }
 
 function getupdateproduct(i) {
-  displayNone(productlist[i]);
+  displayNone(productArray[i]);
   currentIndex = i;
   addBtn.classList.add("d-none");
   updateBtn.classList.remove("d-none");
 }
 
 function updateProduct() {
-  productlist[currentIndex].image = productimg.value;
-  productlist[currentIndex].name = productname.value;
-  productlist[currentIndex].price = productprice.value;
-  productlist[currentIndex].cat = productcat.value;
-  productlist[currentIndex].desc = productdesc.value;
-  productlist[currentIndex].image = `images/${productimg.files[0]?.name}`;
-  display(productlist);
+  productArray[currentIndex].image = productimg.value;
+  productArray[currentIndex].name = productname.value;
+  productArray[currentIndex].price = productprice.value;
+  productArray[currentIndex].cat = productcat.value;
+  productArray[currentIndex].desc = productdesc.value;
+  productArray[currentIndex].image = `images/${productimg.files[0]?.name}`;
+  display(productArray);
   storage();
   updateBtn.classList.add("d-none");
   addBtn.classList.remove("d-none");
@@ -91,14 +95,14 @@ function updateProduct() {
 }
 
 function storage() {
-  localStorage.setItem("product", JSON.stringify(productlist));
+  localStorage.setItem("product", JSON.stringify(productArray));
 }
 
 function search(searchValue) {
   var searchItems = [];
-  for (i = 0; i < productlist.length; i++) {
-    if (productlist[i].name.toLowerCase().includes(searchValue.toLowerCase())) {
-      searchItems.push(productlist[i]);
+  for (i = 0; i < productArray.length; i++) {
+    if (productArray[i].name.toLowerCase().includes(searchValue.toLowerCase())) {
+      searchItems.push(productArray[i]);
     }
   }
   display(searchItems);
