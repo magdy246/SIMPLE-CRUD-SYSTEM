@@ -1,0 +1,103 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-image: url(images/market.jpg);
+    background-position: center;
+    background-size: cover;
+}
+
+.layer {
+    background-color: #0008;
+}
+
+::selection {
+    background-color: #fff;
+    color: #fcac00;
+}
+
+main h1 {
+    font-size: 80px;
+    color: transparent;
+    text-shadow: 0px 0px 2px #ff0000;
+}
+
+label {
+    font-weight: 700;
+    font-size: 20px;
+}
+
+#add-btn,
+#update-btn,
+#border-product .delete,
+#border-product .update {
+    padding-inline: 4rem;
+    background-color: #444;
+    color: #fff;
+    transition: all 0.5s;
+    margin-inline: 5px;
+}
+
+#border-product .update {
+    background-color: #0505fa;
+}
+
+#border-product .delete {
+    background-color: #ff0000;
+}
+
+#update-btn {
+    background-color: #0505fa;
+    font-weight: 700;
+}
+
+#add-btn {
+    background-color: #fcac00;
+    color: #000;
+    font-weight: 700;
+}
+
+#add-btn:hover,
+#update-btn:hover,
+.delete:hover,
+.update:hover {
+    box-shadow: 0px 0px 9px 1px #fff;
+}
+
+img {
+    width: 100%;
+    margin: auto;
+}
+
+.title {
+    color: #fcac00;
+    text-shadow: 0px 1px 5px #000;
+}
+
+.h3-display {
+    color: #fff;
+    text-shadow: 0px 1px 5px #000;
+}
+
+main .form-control:focus {
+    color: #fff;
+    font-weight: 600;
+    background-color: #0005;
+    border-color: transparent;
+    outline: 0;
+    box-shadow: 0px 0px 15px 1px #fff;
+}
+
+main .form-control {
+    background-color: #0005;
+    color: #fff;
+}
+
+@media (max-width:640px) {
+    main h1 {
+        font-size: 35px;
+    }
+}
