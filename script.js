@@ -22,7 +22,7 @@ addBtn.addEventListener("click", function () {
       cat: productcat.value,
       desc: productdesc.value,
       image: `images/${productimg.files[0]?.name}`,
-      id : productArray.length
+      id: productArray.length,
     };
     productArray.push(product);
     displayNone();
@@ -41,7 +41,7 @@ function display(list) {
   <div id="border-product" class="col-12 col-lg-3 rounded-4 overflow-hidden m-2 bg-black">
   <div>
   <h3 class="title text-center">PRODUCT</h3>
-  <input value="${i}" type = "hidden" class = "d-none"/>
+  <input value="${list[i].id}" type = "hidden" class = "d-none"/>
   <h3 class="h3-display">name : ${list[i].name}</h3>
   <h3 class="h3-display">price : ${list[i].price}</h3>
   <h3 class="h3-display">cat : ${list[i].cat}</h3>
@@ -81,17 +81,21 @@ function getupdateproduct(i) {
 }
 
 function updateProduct() {
-  productArray[currentIndex].image = productimg.value;
-  productArray[currentIndex].name = productname.value;
-  productArray[currentIndex].price = productprice.value;
-  productArray[currentIndex].cat = productcat.value;
-  productArray[currentIndex].desc = productdesc.value;
-  productArray[currentIndex].image = `images/${productimg.files[0]?.name}`;
-  display(productArray);
-  storage();
-  updateBtn.classList.add("d-none");
-  addBtn.classList.remove("d-none");
-  displayNone();
+  if (validated() == true) {
+    productArray[currentIndex].image = productimg.value;
+    productArray[currentIndex].name = productname.value;
+    productArray[currentIndex].price = productprice.value;
+    productArray[currentIndex].cat = productcat.value;
+    productArray[currentIndex].desc = productdesc.value;
+    productArray[currentIndex].image = `images/${productimg.files[0]?.name}`;
+    display(productArray);
+    storage();
+    updateBtn.classList.add("d-none");
+    addBtn.classList.remove("d-none");
+    displayNone();
+  } else {
+    alertModal();
+  }
 }
 
 function storage() {
@@ -101,7 +105,9 @@ function storage() {
 function search(searchValue) {
   var searchItems = [];
   for (i = 0; i < productArray.length; i++) {
-    if (productArray[i].name.toLowerCase().includes(searchValue.toLowerCase())) {
+    if (
+      productArray[i].name.toLowerCase().includes(searchValue.toLowerCase())
+    ) {
       searchItems.push(productArray[i]);
     }
   }
