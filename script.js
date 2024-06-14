@@ -3,6 +3,7 @@ var productprice = document.querySelector("#productprice");
 var productcat = document.querySelector("#productcat");
 var productdesc = document.querySelector("#productdesc");
 var productimg = document.querySelector("#productimg");
+var producItem = document.querySelector("#searchitem");
 var alertmodal = document.getElementById("staticBackdrop");
 var closeBtn = document.getElementById("closeBtn");
 var productArray = [];
@@ -29,6 +30,7 @@ addBtn.addEventListener("click", function () {
     display(productArray);
     storage();
     removeClasses();
+    hideSearchData();
   } else {
     alertModal();
   }
@@ -36,7 +38,8 @@ addBtn.addEventListener("click", function () {
 
 function display(list) {
   box = ``;
-  for (i = 0; i < list.length; i++)
+  for (i = 0; i < list.length; i++) {
+    var currentList = productArray.indexOf(list[i]);
     box += `
   <div id="border-product" class="col-12 col-lg-3 rounded-4 overflow-hidden m-2 bg-black">
   <div>
@@ -51,12 +54,13 @@ function display(list) {
   <img src="${list[i].image}" alt = "imag" ></img>
   </div>
   <div class="text-center m-3">
-  <button onclick="deleteproduct(${i})" class="delete btn px-2">delete<i class="ms-2 fa-regular fa-trash-can"></i></button>
-  <button onclick="getupdateproduct(${i})" class="update btn px-2">update<i class="ms-2 fa-regular fa-pen-to-square"></i></button>
+  <button onclick="deleteproduct(${currentList})" class="delete btn px-2">delete<i class="ms-2 fa-regular fa-trash-can"></i></button>
+  <button onclick="getupdateproduct(${currentList})" class="update btn px-2">update<i class="ms-2 fa-regular fa-pen-to-square"></i></button>
   
         
 </div>
 </div>`;
+  }
   document.querySelector("#my-data").innerHTML = box;
 }
 
@@ -67,10 +71,15 @@ function displayNone(configration) {
   productdesc.value = configration ? configration.desc : null;
 }
 
+function hideSearchData() {
+  producItem.value = "";
+}
+
 function deleteproduct(i) {
   productArray.splice(i, 1);
   storage();
   display(productArray);
+  hideSearchData();
 }
 
 function getupdateproduct(i) {
@@ -93,6 +102,7 @@ function updateProduct() {
     updateBtn.classList.add("d-none");
     addBtn.classList.remove("d-none");
     displayNone();
+    hideSearchData();
   } else {
     alertModal();
   }
